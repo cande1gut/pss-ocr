@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>PSS-OCR</title>
+
+    <!-- Bootstrap -->
+    <link href="js/jquery_mobile/jquery.mobile-1.4.5.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Start of first page -->
+    <div data-role="page" id="schedulers" data-pagenum="1">
+    	<div role="main" class="ui-content" id="problemsContent">
+        <div id="imageContainer">
+          <p style="font-size: 25px"> Open a file first or take a picture </p>
+    		  <p>No file loaded</p>
+    			<p style="font-size: 15px">it's okay. I'll wait. </p>
+    			<p style="font-size: 10px">no seriously, I can't move</p>
+    			<p style="font-size: 8px">still waiting...</p>
+    		</div>
+        <div class="schedule" id="fcfs">
+          <div id="innerFcfs">
+          </div>
+        </div>
+        <div class="schedule" id="sjf">
+          <div id="innerSjf">
+          </div>
+        </div>
+        <div class="schedule" id="priority">
+          <div id="innerPriority">
+          </div>
+        </div>
+        <div class="schedule" id="rr">
+          <div id="innerRr">
+            <h3>Round Robin</h3>
+            <label><b>Enter Quantum:</b></label>
+            <textarea onkeypress="return isNumber(event)" type="number" id="quantumNumber" value='' min='0'></textarea>
+            <button id='quantum' class='not-focusable ui-btn ui-btn-a'>Calculate RR</button>
+            <button id='quantum2' class='not-focusable animated ui-btn ui-btn-a'>Clean</button>
+          </div>
+          <div id="innerRr2">
+          </div>
+        </div>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <!-- Start of second page -->
+    <div data-role="page" id="amda" data-pagenum="2">
+
+    	<div role="main" class="ui-content">
+        <div id="imageContainer2">
+          <img id="image" src="img/speed.png">
+          <br>
+          <br>
+          <label><b>Enter number of processing cores:</b></label>
+          <textarea onkeypress="return isNumber(event)" type="number" id="coresNumber" value='' min='0'></textarea>
+          <br>
+          <label><b>Enter serial portion:</b></label>
+          <textarea onkeypress="return isNumber(event)" type="number" id="serialNumber" value='' min='0'></textarea>
+          <br>
+          <button id='adams' class='animated not-focusable ui-btn ui-btn-a'>Calculate speed up</button>
+          <button id='clean' class='animated not-focusable ui-btn ui-btn-a'>Clean</button>
+          <div id="adamResult">
+            <div id="innerAdamResult">
+            </div>
+          </div>
+        </div>
+    	</div><!-- /content -->
+    </div><!-- /page -->
+
+    <div id="footerNav" data-role="footer" data-id="footerNav" data-tap-toggle="false" data-position="fixed" class="ui-footer ui-bar-a ui-footer-fixed">
+      <div data-role="navbar" id="navbarFooter">
+        <ul id="cB" class="animated">
+          <li>
+            <input type="file" onchange="load_file()" id="myfile" accept="image/*">
+            <button id="select" class="not-focusable animated ui-btn ui-btn-b ui-btn-icon-top ui-icon-camera ui-state-persist">Camera</button>
+            <button id="back" class="not-focusable animated ui-btn ui-btn-b ui-btn-icon-top ui-icon-back ui-state-persist">New problem</button>
+          </li>
+        </ul>
+        <ul>
+          <li><a href="#schedulers" data-icon="edit" class="ui-btn-active ui-state-persist" data-pagenum="1">Schedulers</a></li>
+          <li><a href="#amda" data-icon="eye" data-pagenum="2">Amdahl's Law</a></li>
+        </ul>
+      </div><!-- /navbar -->
+    </div><!-- /footer -->
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="js/jquery_1.11.3.js"></script>
+    <script src="js/jquery_mobile/jquery.mobile-1.4.5.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/app.js"></script>
+    <script src="ocrad/ocrad.js"></script>
+  </body>
+</html>
